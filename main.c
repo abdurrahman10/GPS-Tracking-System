@@ -39,6 +39,20 @@ void PortB_Init(){
 	GPIO_PORTB_AFSEL_R |= 0x03;
 	GPIO_PORTB_DEN_R |= 0x03;
 }
+void PortD_Init(){
+	// Initializing Clock and wait until get stablized
+	SYSCTL_RCGCGPIO_R |= 0x08;
+	while((SYSCTL_PRGPIO_R & 0x08) == 0);
+	
+	// Initializing Port D pins
+	GPIO_PORTD_LOCK_R = magicKey;
+	GPIO_PORTD_CR_R |= 0x0F;
+	GPIO_PORTD_AMSEL_R &= ~0x0F;
+	GPIO_PORTD_PCTL_R &= ~0x0F;
+	GPIO_PORTD_DIR_R |= 0x0F;
+	GPIO_PORTD_AFSEL_R &= ~0x0F;
+	GPIO_PORTD_DEN_R |= 0x0F;
+}
 
 // Converting angle unit from degree to radian
 double deg2rad(double deg){
