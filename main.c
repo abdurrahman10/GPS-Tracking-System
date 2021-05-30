@@ -4,7 +4,22 @@ double totalDis = 0; //Global Variable holding the total distance taken
 
 int main(){
 	while(1){
-			
+				
+				
+				
+	}
+	
+}
+void led_control(int control){
+
+	GPIO_PORTF_DATA_R &= ~0xE;
+	GPIO_PORTF_DATA_R |= control;
+
+}
+
+void destination (){
+	if (totalDis>100){ 
+			led_control(GREEN);
 	}
 }
 
