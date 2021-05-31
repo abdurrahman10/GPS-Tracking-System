@@ -10,5 +10,6 @@
 
 void PortF_Init();
 void PortB_Init();
+void PortD_Init();
 double distance(double lat1, double lon1, double lat2, double lon2);
 double deg2rad(double deg);
